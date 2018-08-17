@@ -1,0 +1,131 @@
+<div class="body">
+	<div class="container">
+		<div class="title">
+			<h1>THÊM NHÂN VIÊN</h1>
+		</div>
+
+		<div class="content">
+
+			<div class="content-detail">
+				<div class="column-left">
+					<div class="column">
+						<label>Họ tên <label style="color: red">*</label></label>
+						<span><input type="text" #name></span>
+					</div><br>
+					<div class="column">
+						<label>Mã NV <label style="color: red">*</label></label>
+						<span><input type="text" #code></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày sinh <label style="color: red">*</label></label>
+						<span><input type="text" #birthday></span>
+					</div><br>
+					<div class="column">
+						<label>Giới tính</label>
+						<span>
+							<select name="gender" id="" #gender>
+								<option value="1">Nam</option>
+								<option value="0">Nữ</option>
+								<option value="">Khác</option>
+							</select>
+						</span>
+					</div><br>
+					<div class="column">
+						<label>Số điện thoại <label style="color: red">*</label></label>
+						<span><input type="text" #phone></span>
+					</div><br>
+					<div class="column">
+						<label>Địa chỉ thường trú <label style="color: red">*</label></label>
+						<span><input type="text" #address></span>
+					</div><br>
+					<div class="column">
+						<label>Đại chỉ tạm trú <label style="color: red">*</label></label>
+						<span><input type="text" #temporary_address></span>
+					</div><br>
+					<div class="column">
+						<label>Số CMND/HC <label style="color: red" >*</label></label>
+						<span><input type="number" #passport_number></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày cấp CMND/HC <label style="color: red">*</label></label>
+						<span><input type="number" #passport_date></span>
+					</div><br>
+					<div class="column">
+						<label>Nơi cấp CMND/HC <label style="color: red">*</label></label>
+						<span><input type="text" #passport_place></span>
+					</div><br>
+					
+				</div>
+				<div class="column-right">
+					<div class="column">
+						<label>Email <label style="color: red">*</label></label>
+						<span><input type="email" #email></span>
+					</div><br>
+					<div class="column">
+						<label>Số thẻ ATM <label style="color: red">*</label></label>
+						<span><input type="number" #atm_number></span>
+					</div><br>
+					<div class="column">
+						<label>Mã số thuế </label>
+						<span><input type="number" #tax_code ></span>
+					</div><br>
+					<div class="column">
+						<label>Trình độ</label>
+						<span>
+							<select name="level" id="" #degree>
+								<option value="Đại học">Đại học</option>
+								<option value="Cao đẳng">Cao đẳng</option>
+								<option value="Trung học">Trung học</option>
+								<option value="Khác">Khác</option>
+							</select>
+						</span>
+					</div><br>
+					<div class="column">
+						<label>Ngày bắt đầu thử việc</label>
+						<span><input type="text" #start_fresher></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày kết thúc thử việc</label>
+						<span><input type="text" #end_fresher></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày bắt đầu làm việc</label>
+						<span><input type="text" #start_work></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày kết thúc làm việc</label>
+						<span><input type="text" #end_work></span>
+					</div><br>
+					<div class="column">
+						<label>Vị trí</label>
+						<span>
+							<select name="position" id="" #position>
+								<option value="intern">Thực tập sinh</option>
+								<option value="fresher">Fresher</option>
+								<option value="offical-staff">Nhân viên chính thức</option>
+								<option value="part-time">Nhân viên thời vụ</option>
+								<option value="">Khác</option>
+							</select>
+						</span>
+					</div><br>
+					<div class="column">
+						<label>Trạng thái</label>
+						<span>
+							<select name="state" id="state" #state>
+								<option value="1">Đang làm việc</option>
+								<option value="0">Đã nghỉ việc</option>
+								<option value="2">Đang chờ xem xét</option>
+								<option value="-1">Khác</option>
+							</select>
+						</span>
+					</div><br>
+				</div>
+			</div>
+
+			<div class="button">
+				<button id="ignore">Bỏ qua</button>
+				<button id="add" (click)="addStaff(code.value,name.value,gender.value,birthday.value,phone.value,email.value,degree.value,state.value)" [routerLink]="['/admin/staff/']">Thêm</button>
+			</div>
+		</div>
+	</div>
+</div>

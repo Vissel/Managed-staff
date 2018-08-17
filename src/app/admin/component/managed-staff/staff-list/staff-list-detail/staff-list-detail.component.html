@@ -1,0 +1,158 @@
+<div>
+	<div class="path">
+		<a href="#">Quản lý nhân sự</a>>>
+		<a href="#">Thông tin nhân viên</a>>>
+		<a href="#">Chi tiết</a>
+	</div>
+	<div class="button">
+		<button id="add" [routerLink]="['/admin/staff/staff-list-add']">Thêm</button>
+		<button id="update">Sửa</button>
+	</div>
+	<div class="container">
+		<div class="title">
+			<h1>Thông tin nhân viên</h1>
+		</div>
+
+		<form [formGroup]="editForm" >
+		<div class="content">
+			<div class="content-infomation">
+				<h2 style="color:#000066">{{staff.name}}</h2>
+				<h3 style="font-style: italic">Sinh nhật : {{staff.birthday}}</h3>
+				<h3 style="font-style: italic">Mã nhân viên: {{staff.code}}</h3>
+			</div>
+			
+			<div class="content-detail">
+				<div class="column-left">
+					<div class="column">
+						<label>Địa chỉ thường trú</label>
+						<span><input type="text" value="{{staff.address}}" 
+							[disabled]="isDisplay" #address></span>
+					</div><br>
+					<div class="column">
+						<label>Số CMND/HC</label>
+						<span><input type="number" value="{{staff.passportNumber}}" 
+							[disabled]="isDisplay" #passportNumber></span>
+					</div><br>
+					<div class="column">
+						<label>Nơi cấp CMND/HC</label>
+						<span><input type="text" value="{{staff.placeOfIssue}}" 
+							[disabled]="isDisplay" #placeOfIssue></span>
+					</div><br>
+					<div class="column">
+						<label>Email</label>
+						<span><input type="email" value="{{staff.email}}" 
+							[disabled]="isDisplay" #email></span>
+					</div><br>
+					<div class="column">
+						<label>Mã số thuế</label>
+						<span><input type="number" value="{{staff.taxCode}}" 
+							[disabled]="isDisplay" #taxCode></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày bắt đầu thử việc</label>
+						<span><input type="text" value="{{staff.startProbation}}" 
+							[disabled]="isDisplay" #startProbation></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày bắt đầu làm việc</label>
+						<span><input type="text" value="{{staff.startWorking}}" 
+							[disabled]="isDisplay" #startWorking></span>
+					</div><br>
+					<div class="column">
+						<label>Vị trí</label>
+						<span><input type="text" value="{{staff.position}}" 
+							[disabled]="isDisplay" #position></span>
+					</div><br>
+				</div>
+				<div class="column-right">
+					<div class="column">
+						<label>Địa chỉ tạm trú</label>
+						<span><input type="text" value="{{staff.temporary}}" 
+							[disabled]="isDisplay" #temporary></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày cấp CMND/HC</label>
+						<span><input type="text" value="{{staff.dateOfIssue}}" 
+							[disabled]="isDisplay" #dateOfIssue></span>
+					</div><br>
+					<div class="column">
+						<label>Số điện thoại</label>
+						<span><input type="number" value="{{staff.phone}}" 
+							[disabled]="isDisplay" #phone></span>
+					</div><br>
+					<div class="column">
+						<label>Số ATM</label>
+						<span><input type="number" value="{{staff.atmNumber}}" 
+							[disabled]="isDisplay" #atmNumber></span>
+					</div><br>
+					<div class="column">
+						<label>Trình độ</label>
+						<span>
+							<select [hidden]="!isHidden" >
+								<option value="Đại học" *ngIf="staff.degree == 'Đại học'" 
+								[disabled]="isDisplay">Đại học</option>
+								<option value="Cao đẳng" *ngIf="staff.degree == 'Cao đẳng'" 
+								[disabled]="isDisplay">Cao đẳng</option>
+								<option value="Trung học" *ngIf="staff.degree == 'Trung học'" 
+								[disabled]="isDisplay">Trung học</option>
+								<option value="Khác" *ngIf="staff.degree == 'Khác' " 
+								[disabled]="isDisplay">Khác</option>
+							</select>
+							<select name="" id="" [hidden]="isHidden" #degree>
+								<option value="Đại học" >Đại học</option>
+								<option value="Cao đẳng" >Cao đẳng</option>
+								<option value="Trung học" >Trung học</option>
+								<option value="Khác">Khác</option>
+							</select>
+						</span>
+						
+					</div><br>
+					<div class="column">
+						<label>Ngày kết thúc thử việc</label>
+						<span><input type="text" value="{{staff.endProbation}}" 
+							[disabled]="isDisplay" #endProbation></span>
+					</div><br>
+					<div class="column">
+						<label>Ngày kết thúc làm việc</label>
+						<span><input type="text" value="{{staff.endWorking}}" 
+							[disabled]="isDisplay" #endWorking></span>
+					</div><br>
+					<div class="column">
+						<label>Trạng thái</label>
+						<span>
+							<select name="" id="" [hidden]="!isHidden" >
+								<option *ngIf="staff.lookStatus == 1 " value="Đang làm việc" [disabled]="isDisplay">Đang làm việc</option>
+								<option *ngIf="staff.lookStatus == 0 " value="Đã nghỉ việc" [disabled]="isDisplay">Đã nghỉ việc</option>
+								<option *ngIf="staff.lookStatus == 2 " value="Đang xem xét" [disabled]="isDisplay">Đang xem xét</option>
+								<option *ngIf="staff.lookStatus == -1 " value="Khác" 
+								[disabled]="isDisplay">Khác</option>
+							</select>
+							<select name="" id="" [hidden]="isHidden" #lookStatus>
+								<option value="Đang làm việc" >Đang làm việc</option>
+								<option value="Đã nghỉ việc" >Đã nghỉ việc</option>
+								<option value="Đang xem xét" >Đang xem xét</option>
+								<option value="Khác">Khác</option>
+							</select>
+						</span>
+						<!-- <span><input type="text" *ngIf="staff.lookStatus == 1 " value="Đang làm việc" [disabled]="isDisplay" #lookStatus></span>
+						<span><input type="text" *ngIf="staff.lookStatus == 0 " value="Đã nghỉ việc" [disabled]="isDisplay" #lookStatus></span>
+						<span><input type="text"  *ngIf="staff.lookStatus == 2 " value="Đang xem xét" [disabled]="isDisplay" #lookStatus></span>
+						<span><input type="text"  *ngIf="staff.lookStatus == -1 " value="Khác" 
+							[disabled]="isDisplay" #lookStatus></span> -->
+					</div><br>
+				</div>
+			</div>
+
+			<div class="button-confirm">
+				<button id="ignore">Bỏ qua</button>
+				<button id="update" (click)="onEdit()" [hidden]="!isHidden">
+						Sửa</button>
+				<!-- <button id="update" [hidden]="isHidden" (click)="edit(address.value, temporary.value, passportNumber.value, placeOfIssue.value, dateOfIssue.value, phone.value, email.value, taxCode.value, startProbation.value, endProbation.value,
+				startWorking.value, endWorking.value, position.value, atmNumber.value, degree.value,lookStatus.value)" >Xác nhận</button> -->
+				<button id="update" [hidden]="isHidden" (click)="onUpdateEdit()" >Xác nhận</button>
+			</div>
+		</div>
+		</form>
+	</div>
+
+</div>

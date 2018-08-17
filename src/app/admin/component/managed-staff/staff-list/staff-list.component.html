@@ -1,0 +1,114 @@
+<header>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</header>
+<div class="body">
+	<div class="header">
+		<h1>Thông tin tìm kiếm</h1>
+
+		<div class="search">
+			<div class="column-left">
+				<div class="column">
+					<label>Code</label>
+					<span><input type="text"></span>
+				</div><br>
+				<div class="column">
+					<label>Địa chỉ</label>
+					<span><input type="text"></span>
+				</div><br>
+				<div class="column">
+					<label>Trạng thái</label>
+					<span><input type="text"></span>
+				</div><br>
+			</div>
+
+			<div class="column-center">
+				<div class="column">
+					<label>Tên thành viên</label>
+					<span><input type="text"></span>
+				</div><br>
+				<div class="column">
+					<label>Giới tính</label>
+					<span><input type="text"></span>
+				</div><br>
+				<div class="column">
+					<label>Vị trí</label>
+					<span><input type="text"></span>
+				</div><br>
+			</div>
+
+			<div class="column-right">
+				<div class="column">
+					<label>Ngày sinh</label>
+					<span><input type="text"></span>
+				</div><br>
+				<div class="column">
+					<label>Ngày bắt đầu <br> làm việc</label>
+					<span><input type="text"></span>
+				</div><br>
+			</div>
+		</div>
+
+		<div class="button-search">
+			<button >TÌM KIẾM</button>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="button-add">
+			<button id="add" [routerLink]="['/admin/staff/staff-list-add']">Thêm</button>
+			<button id="out">Xuất</button>
+		</div>
+		<div class="content-detail">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>STT</th>
+						<th>Họ và tên</th>
+						<th>Giới tính</th>
+						<th>Ngày sinh</th>
+						<th>Số điện thoại</th>
+						<th>Email</th>
+						<th>Trình độ</th>
+						<th>Trạng thái</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let staff of list">
+						<td>{{staff.id}}</td>
+						<td>{{staff.name}}</td>
+						<td> {{staff.gender == 1 ? 'Nam' : 'Nữ'}}</td>
+						<td>{{staff.birthday}}</td>
+						<td>{{staff.phone}}</td>
+						<td>{{staff.email}}</td>
+						<td>{{staff.degree}}</td>
+
+						<td *ngIf="staff.lookStatus == 1 ">Đang làm việc</td>
+						<td *ngIf="staff.lookStatus == 0 ">Đã nghỉ việc</td>
+						<td *ngIf="staff.lookStatus == 2 ">Đang xem xét</td>
+						<td *ngIf="staff.lookStatus == -1">Khác</td>
+
+						<td><button id="detail" 
+ 							[routerLink]="['/admin/staff', staff.id]"
+							> <!-- <span *ngIf="isDisplay">
+									[isDisable]="isDisplay"</span> -->
+								Chi tiết</button>
+							
+							<i class="fa fa-remove" id="delete"></i>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>  
+		<div id="get-out">
+			<button id="out">Xuất</button>
+		</div>
+
+		<div id="check-pages">
+			<a href="#"><button class="pages-number">1</button></a>
+			<a href="#"><button class="pages-number">2</button></a>
+			<a href="#"><button class="pages-number">3</button></a>
+			>>
+		</div>
+	</div>
+</div>
