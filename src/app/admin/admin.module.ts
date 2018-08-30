@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllCommonModuleModule } from './../all-common-module/all-common-module.module'
 import { RouterModule } from '@angular/router';
+import  {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import{HttpClientModule } from '@angular/common/http'
 //component
 import { ManagedConfigComponent } from './component/managed-config/managed-config.component';
 import { ManagedNotificationComponent } from './component/managed-notification/managed-notification.component';
@@ -14,23 +17,30 @@ import { AdminComponentComponent } from './admin-component/admin-component.compo
 import { routesAdmin } from './routesAdmin';
 import { ManagedSalaryComponent } from './component/managed-salary/managed-salary.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
-// import { StaffInforComponent } from './component/managed-staff/staff-infor/staff-infor.component';
 import { CvInforComponent } from './component/managed-staff/cv-infor/cv-infor.component';
 
-//thach - component
-import {StaffListComponent} from './component/managed-staff/staff-list/staff-list.component'
-import {StaffListDetailComponent} from './component/managed-staff/staff-list/staff-list-detail/staff-list-detail.component'
-import {StaffListAddComponent} from './component/managed-staff/staff-list/staff-list-add/staff-list-add.component'
+import { NotificationAddComponent } from './component/managed-notification/notification-add/notification-add.component';
+import { NotificationEditComponent } from './component/managed-notification/notification-edit/notification-edit.component';
+
+import { StaffListAddComponent } from './component/managed-staff/staff-list/staff-list-add/staff-list-add.component'
+import { StaffListDetailComponent } from './component/managed-staff/staff-list/staff-list-detail/staff-list-detail.component'
+import { StaffListComponent } from './component/managed-staff/staff-list/staff-list.component'
+
+// import {StaffCvComponent} from './component/managed-staff/staff-cv/staff-cv.component'
+// import {AddStaffCvComponent} from './component/managed-staff/staff-cv/add-staff-cv/add-staff-cv.component'
+// import {EditStaffCvComponent} from './component/managed-staff/staff-cv/edit-staff-cv/edit-staff-cv.component'
+// import {SearchStaffCvComponent} from './component/managed-staff/staff-cv/search-staff-cv/search-staff-cv.component'
 
 @NgModule({
   imports: [
     CommonModule,
     AllCommonModuleModule,
-    RouterModule.forChild(routesAdmin)
-   
+    RouterModule.forChild(routesAdmin),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  declarations: [
-      ManagedConfigComponent,
+  declarations: [ManagedConfigComponent,
     ManagedNotificationComponent,
     ManagedProjectComponent,
     ManagedStaffComponent,
@@ -38,13 +48,20 @@ import {StaffListAddComponent} from './component/managed-staff/staff-list/staff-
     AdminComponentComponent,
     ManagedSalaryComponent,
     HomePageComponent,
-    // StaffInforComponent,
     CvInforComponent,
-
-    StaffListComponent, //thach
-   StaffListDetailComponent,
-   StaffListAddComponent,
-
+    NotificationAddComponent,
+    NotificationEditComponent,
+    //thach
+    StaffListAddComponent,
+    StaffListDetailComponent,
+    StaffListComponent,
+    //linh
+    // StaffCvComponent,
+    // AddStaffCvComponent,
+    // EditStaffCvComponent,
+    // SearchStaffCvComponent,
+   
+    
     ],
     bootstrap:[AdminComponentComponent],
     exports:[AdminComponentComponent]

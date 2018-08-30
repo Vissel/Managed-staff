@@ -10,12 +10,12 @@ export class LogginService {
   }
   checkLog(username:string,password:string,role:string):boolean{
 	if(role=='admin'){
-		if(username == 'grayi' && password =='grayi'){
+		if(username == 'nguyenbanh1' && password =='nguyenbanh1'){
 			return true;
 		}
 	}
 	else if(role=='user'){
-		if(username == 'phuong' && password =='phuong'){
+		if(username == 'user' && password =='user'){
 			return true;
 		}
 	}  	

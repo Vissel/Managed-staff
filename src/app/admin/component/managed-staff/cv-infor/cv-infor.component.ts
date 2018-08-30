@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import {FormGroup, FormBuilder, FormControl} from '@angular/forms'
 @Component({
   selector: 'app-cv-infor',
   templateUrl: './cv-infor.component.html',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvInforComponent implements OnInit {
 
-  constructor() { }
+	form: FormGroup;
+
+  constructor(private fb : FormBuilder) { 
+  	this.form = fb.group({
+  		name: [''],
+  		pass: ['']
+  	})
+  }
 
   ngOnInit() {
+  }
+
+  onClick(){
+  	console.log(this.form.get.name)
   }
 
 }

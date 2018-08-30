@@ -21,6 +21,7 @@ export const routesUser: Routes = [
     {
         path: 'user',
         component: UserComponentComponent,
+        canActivate: [UserGuard],
         children: [
 
             {

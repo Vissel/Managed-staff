@@ -9,8 +9,8 @@ import {ActivatedRoute,Router} from '@angular/router'
 })
 export class StaffService {
 	public listStaff : Staff[] = [
-		new Staff(1,'NV1','Nguyễn Ngọc Thạch',1,'07/01/1996','0981669705','thach@gmail.com','Đại học',1,'An Giang','Di AN Binh Duong',1231256457,'01/01/2001','An Giang',42413213,8234,'Thực tập sinh','02/07/2018','31/06/2018','03/09/2018',''),
-		new Staff(2,'NV2','Ngô Thị Mỹ Linh',0,'12/12/1998','01678293636','linh@gmail.com','Đại học',2,'','',null,'','',null,null,'','','','','')
+		new Staff(1,'NV1','Nguyễn Ngọc Thạch',1,'07/01/1996','0981669705','thach@gmail.com','Đại học',1,'An Giang','Di AN Binh Duong',1231256457,'01/01/2001','An Giang',42413213,8234,'Thực tập sinh','02/07/2018','31/06/2018','03/09/2018','',null,null,null,null,null,null,null,null,null,null,),
+		new Staff(2,'NV2','Ngô Thị Mỹ Linh',0,'12/12/1998','01678293636','linh@gmail.com','Đại học',2,'','',null,'','',null,null,'','','','','',null,null,null,null,null,null,null,null,null,null)
 	]
   constructor(
     public activateRoutes : ActivatedRoute,
@@ -20,6 +20,7 @@ export class StaffService {
 
   getAllList(){
   	return this.listStaff;
+    
   }
 
   getListByID(id: number){

@@ -22,7 +22,8 @@ export class UserGuard implements CanActivate {
           return true;
         }
         else{
-          window.alert('Bạn không có quyền vào trang của admin');
+          window.alert('Bạn không có quyền vào trang của user ');
+           this._routerService.navigate(['admin']);
           return false;
           
         }	

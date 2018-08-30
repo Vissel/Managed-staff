@@ -1,19 +1,20 @@
-<div>
+<header>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</header>
+
+<div *ngIf="staff">
 	<div class="path">
 		<a href="#">Quản lý nhân sự</a>>>
 		<a href="#">Thông tin nhân viên</a>>>
 		<a href="#">Chi tiết</a>
 	</div>
-	<div class="button">
-		<button id="add" [routerLink]="['/admin/staff/staff-list-add']">Thêm</button>
-		<button id="update">Sửa</button>
-	</div>
+	
 	<div class="container">
 		<div class="title">
 			<h1>Thông tin nhân viên</h1>
 		</div>
 
-		<form [formGroup]="editForm" >
+		<form [formGroup]="formEdit">
 		<div class="content">
 			<div class="content-infomation">
 				<h2 style="color:#000066">{{staff.name}}</h2>
@@ -23,25 +24,29 @@
 			
 			<div class="content-detail">
 				<div class="column-left">
+					<p *ngIf="(!formEdit.controls['address'].valid) && (formEdit.controls['address'].touched)"> {{titleAlert}}</p>
 					<div class="column">
 						<label>Địa chỉ thường trú</label>
 						<span><input type="text" value="{{staff.address}}" 
-							[disabled]="isDisplay" #address></span>
+							[disabled]="isDisplay" #address formControlName="address"></span>
 					</div><br>
+					<p *ngIf="(!formEdit.controls['passportNumber'].valid) && (	formEdit.controls['passportNumber'].touched)"> Số CMND/HC không hợp lệ</p>
 					<div class="column">
 						<label>Số CMND/HC</label>
 						<span><input type="number" value="{{staff.passportNumber}}" 
-							[disabled]="isDisplay" #passportNumber></span>
+							[disabled]="isDisplay" #passportNumber formControlName="passportNumber"></span>
 					</div><br>
+					<p *ngIf="(!formEdit.controls['placeOfIssue'].valid) && (	formEdit.controls['placeOfIssue'].touched)"> {{titleAlert}}</p>
 					<div class="column">
 						<label>Nơi cấp CMND/HC</label>
 						<span><input type="text" value="{{staff.placeOfIssue}}" 
-							[disabled]="isDisplay" #placeOfIssue></span>
+							[disabled]="isDisplay" #placeOfIssue formControlName="placeOfIssue"></span>
 					</div><br>
+					<p *ngIf="(!formEdit.controls['email'].valid) && (formEdit.controls['email'].touched)"> Email không hợp lệ</p>
 					<div class="column">
 						<label>Email</label>
 						<span><input type="email" value="{{staff.email}}" 
-							[disabled]="isDisplay" #email></span>
+							[disabled]="isDisplay" #email formControlName="email"></span>
 					</div><br>
 					<div class="column">
 						<label>Mã số thuế</label>
@@ -50,40 +55,65 @@
 					</div><br>
 					<div class="column">
 						<label>Ngày bắt đầu thử việc</label>
-						<span><input type="text" value="{{staff.startProbation}}" 
+						<span><input type="date" value="{{staff.startProbation}}" 
 							[disabled]="isDisplay" #startProbation></span>
 					</div><br>
 					<div class="column">
 						<label>Ngày bắt đầu làm việc</label>
-						<span><input type="text" value="{{staff.startWorking}}" 
+						<span><input type="date" value="{{staff.startWorking}}" 
 							[disabled]="isDisplay" #startWorking></span>
 					</div><br>
 					<div class="column">
 						<label>Vị trí</label>
-						<span><input type="text" value="{{staff.position}}" 
-							[disabled]="isDisplay" #position></span>
+						<span>
+							<select name="position" [hidden]="!isHidden">
+								<option value="Thực tập sinh" *ngIf="staff.position == 'Thực tập sinh'" 
+									[disabled]="isDisplay">Thực tập sinh</option>
+								<option value="Fresher" *ngIf="staff.position == 'Fresher'" 
+									[disabled]="isDisplay">Fresher</option>
+								<option value="Nhân viên chính thức" *ngIf="staff.position == 'Nhân viên 	chính thức'" [disabled]="isDisplay">Nhân viên chính thức</option>
+								<option value="Nhân viên chính thức" *ngIf="staff.position == 'Nhân viên 	thời vụ'" [disabled]="isDisplay">Nhân viên thời vụ</option>
+								<option value="Khác" *ngIf="staff.position == ''" 
+									[disabled]="isDisplay">Khác</option>
+							</select>
+							<select name="position" [hidden]="isHidden"  #position>
+								<option value="Thực tập sinh">Thực tập sinh</option>
+								<option value="Fresher">Fresher</option>
+								<option value="Nhân viên chính thức" >Nhân viên chính thức</option>
+								<option value="Nhân viên chính thức" >Nhân viên thời vụ</option>
+								<option value="Khác">Khác</option>
+							</select>
+						</span>
+					</div><br>
+					<div class="column">
+						<label>CV cá nhân</label>
+						<span> <i class="fa fa-eye"> Xem  </i></span>
 					</div><br>
 				</div>
+
 				<div class="column-right">
+					<p *ngIf="(!formEdit.controls['temporary'].valid) && (formEdit.controls['temporary'].touched)"> {{titleAlert}}</p>
 					<div class="column">
 						<label>Địa chỉ tạm trú</label>
 						<span><input type="text" value="{{staff.temporary}}" 
-							[disabled]="isDisplay" #temporary></span>
+							[disabled]="isDisplay" #temporary formControlName="temporary"></span>
 					</div><br>
 					<div class="column">
 						<label>Ngày cấp CMND/HC</label>
-						<span><input type="text" value="{{staff.dateOfIssue}}" 
+						<span><input type="date" value="{{staff.dateOfIssue}}" 
 							[disabled]="isDisplay" #dateOfIssue></span>
 					</div><br>
+					<p *ngIf="(!formEdit.controls['phone'].valid) && (formEdit.controls['phone'].touched)"> Số điện thoại 10 hoặc 11 số</p>
 					<div class="column">
 						<label>Số điện thoại</label>
 						<span><input type="number" value="{{staff.phone}}" 
-							[disabled]="isDisplay" #phone></span>
+							[disabled]="isDisplay" #phone formControlName="phone"></span>
 					</div><br>
+					<p *ngIf="(!formEdit.controls['atmNumber'].valid) && (formEdit.controls['atmNumber'].touched)"> {{titleAlert}}</p>
 					<div class="column">
-						<label>Số ATM</label>
+						<label>Số Tài khoản ngân hàng</label>
 						<span><input type="number" value="{{staff.atmNumber}}" 
-							[disabled]="isDisplay" #atmNumber></span>
+							[disabled]="isDisplay" #atmNumber formControlName="atmNumber"></span>
 					</div><br>
 					<div class="column">
 						<label>Trình độ</label>
@@ -109,12 +139,12 @@
 					</div><br>
 					<div class="column">
 						<label>Ngày kết thúc thử việc</label>
-						<span><input type="text" value="{{staff.endProbation}}" 
+						<span><input type="date" value="{{staff.endProbation}}" 
 							[disabled]="isDisplay" #endProbation></span>
 					</div><br>
 					<div class="column">
 						<label>Ngày kết thúc làm việc</label>
-						<span><input type="text" value="{{staff.endWorking}}" 
+						<span><input type="date" value="{{staff.endWorking}}" 
 							[disabled]="isDisplay" #endWorking></span>
 					</div><br>
 					<div class="column">
@@ -140,11 +170,15 @@
 						<span><input type="text"  *ngIf="staff.lookStatus == -1 " value="Khác" 
 							[disabled]="isDisplay" #lookStatus></span> -->
 					</div><br>
+					<div class="column">
+						<label>Các dự án đã tham gia</label>
+						<span> <i class="fa fa-eye"> Xem  </i></span>
+					</div><br>
 				</div>
 			</div>
 
 			<div class="button-confirm">
-				<button id="ignore">Bỏ qua</button>
+				<button id="ignore" [routerLink]="['/admin/staff/staff-list']">Bỏ qua</button>
 				<button id="update" (click)="onEdit()" [hidden]="!isHidden">
 						Sửa</button>
 				<!-- <button id="update" [hidden]="isHidden" (click)="edit(address.value, temporary.value, passportNumber.value, placeOfIssue.value, dateOfIssue.value, phone.value, email.value, taxCode.value, startProbation.value, endProbation.value,

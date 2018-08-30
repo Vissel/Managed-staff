@@ -33,7 +33,7 @@ h1{
 	// margin-left:3%;
 	// margin-top: 3%;
 	top:40px;
-	bottom: 40px;
+	margin-bottom: 40px;
 	// left: 30px;
 
 }
@@ -129,4 +129,11 @@ button {
 }
 #ignore:hover {
 	background: #990000
+}
+p {
+	font-size: 12px;
+	color: red;
+	margin-left: 40%;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
